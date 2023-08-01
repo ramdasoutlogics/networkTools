@@ -168,9 +168,9 @@ class PortScanner {
 
       return activeHost;
     } catch (e) {
-      // if (e is! SocketException) {
-      //   rethrow;
-      // }
+      if (e is! SocketException) {
+        return null;
+      }
 
       // Check if connection timed out or we got one of predefined errors
       if (e.osError == null || _errorCodes.contains(e.osError?.errorCode)) {
